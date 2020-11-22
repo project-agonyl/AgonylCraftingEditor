@@ -47,5 +47,13 @@
         public ushort Outcome { get; set; }
 
         public string OutcomeName { get; set; }
+
+        public ushort Unknown1 { get; set; }
+
+        public ushort Unknown2 { get; set; }
+
+        public ushort Unknown3 { get; set; }
+
+        public ushort Unknown4 { get; set; }
     }
 }

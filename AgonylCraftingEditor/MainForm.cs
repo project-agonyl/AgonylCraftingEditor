@@ -191,7 +191,10 @@ namespace AgonylCraftingEditor
                     dataBuilder.PutBytes(BitConverter.GetBytes(item.Item10));
                     dataBuilder.PutBytes(BitConverter.GetBytes(item.SuccessRate));
                     dataBuilder.PutBytes(BitConverter.GetBytes(item.Outcome));
-                    dataBuilder.PutBytes(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+                    dataBuilder.PutBytes(BitConverter.GetBytes(item.Unknown1));
+                    dataBuilder.PutBytes(BitConverter.GetBytes(item.Unknown2));
+                    dataBuilder.PutBytes(BitConverter.GetBytes(item.Unknown3));
+                    dataBuilder.PutBytes(BitConverter.GetBytes(item.Unknown4));
                 }
 
                 File.WriteAllBytes(saveFileDialog.FileName, dataBuilder.GetBuffer());
@@ -231,6 +234,10 @@ namespace AgonylCraftingEditor
                     SuccessRate = Utils.BytesToUInt16(Utils.SkipAndTakeLinqShim(ref dataFile, 2, i + 20)),
                     Outcome = Utils.BytesToUInt16(Utils.SkipAndTakeLinqShim(ref dataFile, 2, i + 22)),
                     OutcomeName = Utils.GetItemName(Utils.BytesToUInt16(Utils.SkipAndTakeLinqShim(ref dataFile, 2, i + 22))),
+                    Unknown1 = Utils.BytesToUInt16(Utils.SkipAndTakeLinqShim(ref dataFile, 2, i + 24)),
+                    Unknown2 = Utils.BytesToUInt16(Utils.SkipAndTakeLinqShim(ref dataFile, 2, i + 26)),
+                    Unknown3 = Utils.BytesToUInt16(Utils.SkipAndTakeLinqShim(ref dataFile, 2, i + 28)),
+                    Unknown4 = Utils.BytesToUInt16(Utils.SkipAndTakeLinqShim(ref dataFile, 2, i + 30)),
                 });
             }
 
